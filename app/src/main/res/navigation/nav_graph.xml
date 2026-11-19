@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/HomeFragment">
+
+    <fragment
+        android:id="@+id/HomeFragment"
+        android:name="net.interlecto.geoutils.ui.home.HomeFragment"
+        android:label="@string/home_fragment_label"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_HomeFragment_to_FindFileFragment"
+            app:destination="@id/FindFileFragment" />
+        <action
+            android:id="@+id/action_HomeFragment_to_ProjectFragment"
+            app:destination="@id/ProjectFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/FindFileFragment"
+        android:name="net.interlecto.geoutils.ui.files.FindFileFragment"
+        android:label="@string/find_file_fragment_label"
+        tools:layout="@layout/fragment_find_file">
+
+        <action
+            android:id="@+id/action_global_returnTo_HomeFragment"
+            app:destination="@id/HomeFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_FindFileFragment_to_ProjectFragment"
+            app:destination="@id/ProjectFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ProjectFragment"
+        android:name="net.interlecto.geoutils.ProjectFragment"
+        android:label="@string/project_fragment_label"
+        tools:layout="@layout/fragment_project">
+
+        <action
+            android:id="@+id/action_global_returnTo_HomeFragment"
+            app:destination="@id/HomeFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

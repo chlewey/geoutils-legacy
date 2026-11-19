@@ -1,0 +1,87 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "a6e901d621a3eec9ea19a280fc7ef0f2",
+    "entities": [
+      {
+        "tableName": "non_project_files",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`filePath` TEXT NOT NULL, `lastModified` INTEGER NOT NULL, PRIMARY KEY(`filePath`))",
+        "fields": [
+          {
+            "fieldPath": "filePath",
+            "columnName": "filePath",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastModified",
+            "columnName": "lastModified",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "filePath"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "project_files",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`gupFilePath` TEXT NOT NULL, PRIMARY KEY(`gupFilePath`))",
+        "fields": [
+          {
+            "fieldPath": "gupFilePath",
+            "columnName": "gupFilePath",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "gupFilePath"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "file_project_cross_ref",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`filePath` TEXT NOT NULL, `gupFilePath` TEXT NOT NULL, PRIMARY KEY(`filePath`, `gupFilePath`))",
+        "fields": [
+          {
+            "fieldPath": "filePath",
+            "columnName": "filePath",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "gupFilePath",
+            "columnName": "gupFilePath",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "filePath",
+            "gupFilePath"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'a6e901d621a3eec9ea19a280fc7ef0f2')"
+    ]
+  }
+}
